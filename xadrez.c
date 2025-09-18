@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    // Nível Novato - Movimentação das Peças
+    //Nível Novato - Movimentação das Peças
     int mov_bispo = 1; //5 casas na diagonal superior direita
     int mov_torre = 1; //5 casas para a direita
     int mov_rainha; //8 casas para a esquerda
-    
+    int mov_cavalo; //2 casas para baixo e 1 para a esquerda
+        
     //Bispo
     printf("Movimentação Bispo\n");
     while (mov_bispo <= 5) {
         printf("Cima, Direita\n"); 
         mov_bispo++; 
     }
-
 
     //Torre
     printf("Movimentação Torre\n");
@@ -27,14 +27,18 @@ int main() {
         printf("Esquerda\n");
     }
 
-
-
+    //Nível Aventureiro - Movimentação do Cavalo
+    //Cavalo
     
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
+    printf("Movimentação Cavalo\n");
+    for (mov_cavalo = 1; mov_cavalo <= 2; mov_cavalo++) {
+        while (mov_cavalo <= 2) {
+            printf("Baixo\n");
+            mov_cavalo++;
+        }
+        printf("Esquerda\n");
+    }
+   
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
     // Exemplo: Crie uma função recursiva para o movimento do Bispo.
