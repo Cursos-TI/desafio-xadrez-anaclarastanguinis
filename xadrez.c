@@ -1,50 +1,64 @@
 #include <stdio.h>
 
-int main() {
-    //Nível Novato - Movimentação das Peças
-    int mov_bispo = 1; //5 casas na diagonal superior direita
-    int mov_torre = 1; //5 casas para a direita
-    int mov_rainha; //8 casas para a esquerda
-    int mov_cavalo; //2 casas para baixo e 1 para a esquerda
-        
-    //Bispo
-    printf("Movimentação Bispo\n");
-    while (mov_bispo <= 5) {
-        printf("Cima, Direita\n"); 
-        mov_bispo++; 
-    }
+//NIVEL MESTRE - DESAFIOS:
+//Movimentações - Rainha e Torre com funções recursivas simples
+//Movimentações - Bispo recursiva com loops aninhados
+//Movimentações - Cavalo loop com variáveis e condições múltiplas + uso de continue e break.
 
-    //Torre
-    printf("Movimentação Torre\n");
-    do {
+
+//BISPO  
+void bispo_recursiva(int x) {
+    for (int a = 1; a <= 5; a++) { //
+        printf("Cima, "); 
+        for (int b = 1; b <= 1; b++) { 
+            printf("Direita\n");
+        } 
+    } //após a primeira execução, 'b <= 1' é falsa, encerra-se o loop interno para executar o externo ate que 'a <= 5' seja falsa
+}
+//TORRE
+void torre_recursiva(int y) {
+    if (y <= 5) {
         printf("Direita\n");
-        mov_torre++;
-    } while (mov_torre <= 5);
+        torre_recursiva(y + 1);
+    }
+}
+//RAINHA
+void rainha_recursiva(int z) {
+    if (z <= 8) {
+        printf("Esquerda\n");
+        rainha_recursiva(z + 1);
+    }
+}
 
-    //Rainha
+int main() {        
+    //BISPO
+    printf("Movimentação Bispo\n");
+    int bispo = 1; 
+    bispo_recursiva(bispo); //chamando a recursiva correspondente
+
+    //TORRE
+    printf("Movimentação Torre\n");
+    int torre = 1; 
+    torre_recursiva(torre); //chamando a recursiva correspondente
+
+    //RAINHA
     printf("Movimentação Rainha\n");
-    for (mov_rainha = 1; mov_rainha <= 8; mov_rainha++) {
-        printf("Esquerda\n");
-    }
+    int rainha = 1; 
+    rainha_recursiva(rainha); //chamando a recursiva correspondente
 
-    //Nível Aventureiro - Movimentação do Cavalo
-    //Cavalo
-    
+    //CAVALO 
     printf("Movimentação Cavalo\n");
-    for (mov_cavalo = 1; mov_cavalo <= 2; mov_cavalo++) {
-        while (mov_cavalo <= 2) {
-            printf("Baixo\n");
-            mov_cavalo++;
+    int cavalo_vertical, cavalo_horizontal;
+    for (cavalo_vertical = 1, cavalo_horizontal = 1;
+        cavalo_vertical <= 3 && cavalo_horizontal <= 3; // as duas precisam ser verdade
+        cavalo_vertical++, cavalo_horizontal++) {
+        if (cavalo_vertical <= 2) {
+            printf("Cima\n");
+            continue; //garante que o restante do loop não seja executado até q 'cavalo_vertical <= 2' seja falsa
         }
-        printf("Esquerda\n");
-    }
-   
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
+        //essa parte do loop só é alcançada na terceira iteraçãoquando 'cavalo_vertical' e 'cavalo_horizontal' = 3
+        printf("Direita\n");
+        break; //garante que o loop não continue mesmo se 'cavalo_vertical <= 3 && cavalo_horizontal <= 3' for verdadeira
+    }   
     return 0;
 }
